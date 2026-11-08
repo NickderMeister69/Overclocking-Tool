@@ -1,0 +1,41 @@
+TWEAKER – CPU & GPU sicher übertakten / undervolten
+=========================================================
+
+Start: Tweaker.exe doppelklicken (fragt nach Administrator-Rechten – nötig, um Werte an der Grafikkarte zu setzen).
+Die App erkennt Prozessor und Grafikkarte automatisch und lässt nur Werte zu, die für genau diese Hardware sicher sind.
+
+SO GEHT'S
+1. Voreinstellung wählen (z. B. „Undervolt“ bei der Grafikkarte, „Effizient“ beim Prozessor) – oder Regler selbst stellen.
+2. „Anwenden“ → 15 Sekunden prüfen, ob alles normal läuft → „Behalten“. Ohne Klick wird automatisch zurückgesetzt.
+3. „Stabilitätstest (3 Min)“ → lastet CPU und GPU voll aus und prüft, ob sich die Grafikkarte verrechnet.
+   Bestanden = Werte gelten als „getestet“. Nicht bestanden = alles wird automatisch auf Werkseinstellung zurückgesetzt.
+4. Optional: Schalter „Mit Windows starten“ unten links – Tweaker startet beim Anmelden im Infobereich und übernimmt deine Werte.
+
+SCHLIESSEN: Das X schließt Tweaker nicht, sondern legt es als Symbol unten rechts in die Taskleiste.
+Klick öffnet, Rechtsklick → „Beenden“ beendet ganz.
+
+WAS DIE APP KANN
+Grafikkarte (NVIDIA, über die offizielle NVIDIA-Schnittstelle NVML – kein Zusatztreiber):
+  - Leistungslimit (weniger Strom = kühler/leiser, mehr = etwas mehr FPS)
+  - Kern- und Speicher-Takt-Offset (Übertakten)
+  - Takt-Obergrenze (zusammen mit Offset = Undervolting: gleicher Takt mit weniger Spannung)
+Prozessor (über einen eigenen Windows-Energieplan „Nick Tweaker“):
+  - Turbo-Verhalten, maximaler Takt (weniger Takt = weniger Spannung), minimaler Prozessorzustand
+
+WAS SIE BEWUSST NICHT MACHT
+  - CPU-Spannung/Multiplikator und RAM (XMP/EXPO): geht sicher nur im BIOS. Windows-Tools dafür brauchen
+    unsichere Kernel-Treiber, die Windows heute blockiert.
+  - AMD-/Intel-Grafikkarten: dafür AMD Adrenalin bzw. Intel Graphics Software nutzen.
+
+SICHERHEITSNETZ
+  - Werte sind auf sichere Bereiche je Grafikkarten-Generation begrenzt (Laptop-GPUs noch vorsichtiger).
+  - Friert der PC nach „Anwenden“ ein: Neustart → Grafikkarte läuft wieder normal, die App setzt beim nächsten Öffnen alles zurück.
+  - Stürzt der PC nach dem automatischen Anwenden beim Windows-Start innerhalb von 90 s ab, wird der Autostart abgeschaltet.
+  - Test stoppt automatisch bei zu hoher Temperatur (GPU ab ca. 87 °C, CPU 5 °C unter ihrer Maximaltemperatur).
+  - „Alles zurücksetzen“ stellt Werkseinstellung + deinen alten Energieplan wieder her.
+
+Hinweis: Manche NVIDIA-Treiber geben unter Windows den Takt-Offset nicht frei. Dann zeigt die App das an –
+Leistungslimit und Takt-Obergrenze funktionieren trotzdem (wirkt ebenfalls wie ein Undervolt).
+
+Einstellungen liegen in %AppData%\NickTweaker\config.json.
+Übertakten erfolgt auf eigene Verantwortung.
